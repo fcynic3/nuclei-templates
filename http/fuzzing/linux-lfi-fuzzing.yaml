@@ -11,7 +11,7 @@ info:
     cwe-id: CWE-200
   tags: linux,lfi,fuzz
   metadata:
-    max-request: 22
+    max-request: 44
 
 http:
   - method: GET
