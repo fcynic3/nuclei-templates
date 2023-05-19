@@ -1,0 +1,26 @@
+id: trn-generator exposures
+
+info:
+  name: Build Properties File Exposure
+  author: DhiyaneshDk
+  severity: info
+  metadata:
+    max-request: 4
+    verified: true
+  tags: exposure,config,files
+
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}/build.properties'
+      - '{{BaseURL}}/build/build.properties'
+      - '{{BaseURL}}/manual/style/build.properties'
+      - '{{BaseURL}}//trn-generator'
+      - '{{BaseURL}}//trn-generator/Accesses.txt'
+
+    stop-at-first-match: false
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
