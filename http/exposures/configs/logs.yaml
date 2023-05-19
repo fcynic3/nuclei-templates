@@ -1,29 +1,37 @@
-id: git-config
+id: logs
 
 info:
-  name: logs file configuration
+  name: Logs disclosures
   author: suga
-  severity: critical
-  description: Web logs file disclosures.
+  severity: medium
+  description: Web logs file configuration
+  remediation: Remove the configuration file from the web root.
+  reference:
+    - https://httpd.apache.org/docs/2.4/configuring.html
   classification:
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
     cvss-score: 5.3
     cwe-id: CWE-200
-  tags: config,logs,exposure
+  tags: config,exposure,logs
   metadata:
     max-request: 5
 
 http:
   - method: GET
     path:
-      - "{{BaseURL}}/log/production.log
-      - "{{BaseURL}}/config/app_env.yml
-      - "{{BaseURL}}/config/database.yml
-      - "{{BaseURL}}/config/secrets.yml
-      - "{{BaseURL}}/logs/user.txt
+      - "{{BaseURL}}/log/production.log"
+      - "{{BaseURL}}/config/app_env.yml"
+      - "{{BaseURL}}/config/database.yml"
+      - "{{BaseURL}}/config/secrets.yml"
+      - "{{BaseURL}}/logs/user.txt"
+      - "{{BaseURL}}//trn-generator/"
+      - "{{BaseURL}}//trn-generator/Accesses.txt"
+      - "{{BaseURL}}/adminconsole/install.htm"
 
-    matchers-condition: and
-     matchers:
+
+    matchers:
       - type: status
         status:
           - 200
+
+# Enhanced by cs on 2023/02/13
